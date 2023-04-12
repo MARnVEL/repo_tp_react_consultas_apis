@@ -81,53 +81,65 @@ function App() {
   }
   
   return (
-    <div className="container-md">
-      <div className="row mb-2">
-        <h1 
-          className='col-md-12 bg bg-danger text-white text-center border border-1 rounded rounded-2 p-2 mb-0'
-        >
-          Consulta API
-        </h1>
+    <>
+      <div className="container-fluid">
 
-      </div>
-      <div className="row min-vh-100">
-        <div className="conteiner-md d-flex justify-content-center align-items-center">
+        <div className="row mb-2">
+          <nav className='container-fluid mx-0 w-100'>
+            <h1 
+              className='bg bg-black opacity-75 text text-light text-border text-center fw-bold border border-1 rounded rounded-2 p-2 mb-0'
+            >
+              Consulta API
+            </h1>
 
-          {
-            respuestaAPI.length === 0
-            ? (
-              <button 
-                className='btn btn-outline-success text-dark border border-1 border-danger d-flex justify-content-center align-items-center'
-                onClick={() => consumirAPI("https://dog.ceo/api/breed/pug/images")}
-              >
-                Consultar API
-              </button>
+          </nav>
 
-            )
-            : ( 
-                <div className="d-flex justify-content-center align-items-center">
-                  <div className="row">
-
-                    {
-                      respuestaAPI.message.map( (item, i) => (
-                        <Card
-                          className="d-flex justify-content-center align-items-center"
-                          key={i}
-                          posicion={i}
-                          data={item}
-                          handleDelete={handleDelete}
-                        />
-                      ))
-                    }
-                  </div>
-                  
-                </div>
-              )
-          }
         </div>
 
       </div>
-    </div>
+      <div className="container-md">
+
+        <div className="row min-vh-100">
+          <div className="container-md d-flex justify-content-center align-items-center">
+
+            {
+              respuestaAPI.length === 0
+              ? (
+                <button 
+                  className='btn btn-outline-success text-dark border border-1 border-danger d-flex justify-content-center align-items-center'
+                  onClick={() => consumirAPI("https://dog.ceo/api/breed/pug/images")}
+                >
+                  Consultar API
+                </button>
+
+              )
+              : ( 
+                  <div className="d-flex justify-content-center align-items-center">
+                    <div className="row">
+
+                      {
+                        respuestaAPI.message.map( (item, i) => (
+                          <Card
+                            className="d-flex justify-content-center align-items-center"
+                            key={i}
+                            posicion={i}
+                            data={item}
+                            handleDelete={handleDelete}
+                          />
+                        ))
+                      }
+                    </div>
+                    
+                  </div>
+                )
+            }
+          </div>
+
+        </div>
+      </div>
+    
+    
+    </>
     
   )
 }

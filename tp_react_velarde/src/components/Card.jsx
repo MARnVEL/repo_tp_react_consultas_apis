@@ -8,17 +8,24 @@ function Card({data, posicion, handleDelete}) {
     } */
 
     return (
-        <div className='col-md-4 sm-6 d-flex justify-content-center align-items-center'>
-            <div className="card mb-3" style={ {width: "18rem"} }>
+        <div className='col-md-3 col-sm-6 d-flex justify-content-center align-items-center'>
+            <div className="card mb-3 p-1 border border-1 border-black" style={ {width: "18rem"} }>
+                {/* Ojo con la clase de la etiqueta img porque tiene estilos especiales en una hoja css separada */}
                 <img src={data} className="card-img-top" alt="Imagen de perro" />
                 <div className="card-body">
-                    <h5 className="card-title">Can</h5>
+                    <h5 className="card-title">The Perros App</h5>
                     <p className="card-text">
-                        Perros!
+                        Dog's name
                     </p>
-                    <button className='btn btn-primary' onClick={() => handleDelete(posicion)}>
-                        Eliminar
-                    </button>
+                    <div className="container-md d-flex justify-content-center align-items-center">
+                        <div className="row">
+                            <div className="container-md d-flex justify-content-center align-items-center">
+                                <button className='btn btn-outline-danger opacity-75 text-dark fw-bold shadow-lg hover' onClick={() => handleDelete(posicion)}>
+                                    Eliminar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
