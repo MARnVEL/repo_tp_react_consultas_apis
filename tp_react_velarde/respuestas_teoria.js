@@ -131,50 +131,50 @@ En resumen, el hook useEffect es útil para "realizar operaciones asíncronas en
 //######################################################################################################
 f- ¿Qué es el contexto en React?
 
-En React, el contexto es una forma de compartir datos entre componentes sin necesidad de pasar props manualmente a través de todos los niveles de la jerarquía de componentes. El contexto proporciona una forma de transmitir datos desde el componente principal a los componentes secundarios, independientemente de su profundidad en el árbol de componentes.
+[2] Es una forma de manejar el estado de manera global.
+Puede ser usado en conjunto con el Hooke "useState" para compartir el estado entre componentes profundamente anidados de una manera más facil de lo que sería si sólo se usa el useState, individualmente.
 
-El contexto consta de dos partes principales: el proveedor y el consumidor. El proveedor define los datos que se van a compartir y los propaga a través del árbol de componentes, mientras que el consumidor consume los datos que se proporcionan en el contexto.
 
-El contexto es particularmente útil para compartir datos globales, como la información de autenticación del usuario o las preferencias de tema. También puede ser útil para proporcionar funciones y métodos compartidos a través de componentes en la aplicación.
+[1] En React, es un mecanismo que permite pasar datos de un componente a otro sin tener que pasar explícitamente las props a través de todos los niveles de la jerarquía de componentes. El contexto proporciona una forma de transmitir datos desde el componente principal a los componentes secundarios, independientemente de su profundidad en el árbol de componentes.
+El contexto se define en un componente padre y puede ser utilizado por cualquier componente hijo que esté dentro del árbol de componentes de ese padre. Consta de dos partes principales: el proveedor y el consumidor.
+    *El proveedor define los datos que se van a compartir y los propaga a través del árbol de componentes, mientras que 
+    *El consumidor consume los datos que se proporcionan en el contexto.
+
+El contexto es particularmente útil para compartir datos globales, como la información de autenticación del usuario o las preferencias de tema. También puede ser útil para proporcionar funciones y métodos compartidos que se utilizan en muchos componentes de la aplicación.
 
 Para utilizar el contexto en React, se puede utilizar el método createContext para crear un objeto de contexto, que luego se puede pasar a un proveedor para proporcionar los datos en el contexto y a los componentes consumidores para acceder a los datos en el contexto.
 
 
-
-
 ***********************************************
-El hook useContext es utilizado en React para acceder al contexto de un componente que ha sido creado mediante el uso de:
-     ´React.createContext´
-Imaginemos que tenemos un componente ´Parent´ que contiene información que necesitamos acceder desde otros componentes hijos. Podemos crear un contexto usando React.createContext en el Parent y pasarlo como un prop al componente hijo que lo necesite, pero si tenemos muchos componentes anidados que necesitan acceder al mismo contexto, puede volverse tedioso pasar el prop una y otra vez. En lugar de hacer esto, podemos usar useContext para acceder al contexto directamente desde el componente hijo.
 
-Veamos un ejemplo para entenderlo mejor:
-// Creamos un contexto
+[1] Imaginemos que tenemos un componente ´Parent´ que contiene información que necesitamos acceder desde otros componentes hijos. Podemos crear un contexto usando React.createContext en el Parent y pasarlo como un prop al componente hijo que lo necesite, pero si tenemos muchos componentes anidados que necesitan acceder al mismo contexto, puede volverse tedioso pasar el prop una y otra vez. En lugar de hacer esto, podemos usar useContext para acceder al contexto directamente desde el componente hijo.
+Creamos un contexto:
 const MyContext = React.createContext();
 
-// Componente padre
+Componente padre:
 function Parent(props) {
     const [state, setState] = useState(0);
 
     return (
         <MyContext.Provider value={{ state, setState }}>
-        {props.children}
+            {props.children}
         </MyContext.Provider>
     );
 }
 
-// Componente hijo que usa el contexto
+Componente hijo que usa el contexto:
 function Child() {
     const { state, setState } = useContext(MyContext);
 
     return (
         <div>
-        <h2>Valor de estado en Child: {state}</h2>
-        <button onClick={() => setState(state + 1)}>Aumentar</button>
+            <h2>Valor de estado en Child: {state}</h2>
+            <button onClick={() => setState(state + 1)}>Aumentar</button>
         </div>
     );
 }
 
-// Componente principal que contiene al padre y al hijo
+Componente principal que contiene al padre y al hijo
 function App() {
     return (
         <div>
@@ -188,20 +188,18 @@ function App() {
 En este ejemplo, hemos creado un contexto llamado MyContext en el componente Parent y lo hemos pasado a través de la propiedad value del componente Provider. Dentro del componente Child, usamos useContext para acceder al contexto y obtenemos el estado state y la función setState.
 
 Cuando se hace clic en el botón dentro del componente Child, llamamos a la función setState que actualiza el estado en el componente Parent. Debido a que el estado ha sido actualizado, el valor de state en el componente Child se actualiza también y se muestra en la pantalla.
+!Ojo: un componente hijo tiene acceso a cambiar el estado global si comparte el contexto global.
 
 En resumen, useContext nos permite acceder al contexto creado en un componente padre desde un componente hijo sin tener que pasar el prop a través de cada nivel de anidación. Esto hace que el código sea más limpio y fácil de mantener.
 
 
 
+Fuentes:
+    [1][https://chat.openai.com/]
+    [2][https://www.w3schools.com/react/react_usecontext.asp]
+    [3][https://beta.es.reactjs.org/reference/react/useContext]
+    [4][https://beta.es.reactjs.org/learn/passing-data-deeply-with-context]
 
-
-
-
-
-Fuente: [https://chat.openai.com/]
-
-
-f- El contexto (context) en React es un mecanismo que permite pasar datos de un componente a otro sin tener que pasar explícitamente las props a través de cada nivel del árbol de componentes. El contexto se define en un componente padre y puede ser utilizado por cualquier componente hijo que esté dentro del árbol de componentes de ese padre. El contexto es especialmente útil para datos globales que se utilizan en muchos componentes de la aplicación.
 
 
 

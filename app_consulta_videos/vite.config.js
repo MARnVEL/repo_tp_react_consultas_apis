@@ -1,4 +1,8 @@
 import { defineConfig } from 'vite'
+// import { join } from 'path';
+// import { config } from 'dotenv';
+
+// config({ path: join(__dirname, '.env') });
 import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/

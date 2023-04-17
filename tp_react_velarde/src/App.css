@@ -1,3 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+    color: rgb(239, 237, 237); /* Establece el color del texto en blanco */
+    -webkit-text-stroke: 1px rgb(188, 11, 11); /* Agrega un borde de 1px alrededor del texto en rojo */
+    text-shadow: 
+      2px 3px 0 red, 
+      -1px -1px 0 red, 
+      0.5px -1px 0 red, 
+      -1px 0.5px 0 red, 
+      0.5px 0.5px 0 red; /* Agrega sombras para simular el borde */
+}
+
 .card-img-top {
     height: 200px;
     object-fit: cover;

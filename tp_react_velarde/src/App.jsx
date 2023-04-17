@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react'
 import Card from './components/Card';
 import './App.css';
 
-
-
 function App() {
 
   const [respuestaAPI, setRespuestaAPI] = useState([])
@@ -79,7 +77,7 @@ function App() {
  */
 
   }
-  
+
   return (
     <>
       <div className="container-fluid">
@@ -87,7 +85,7 @@ function App() {
         <div className="row mb-2">
           <nav className='container-fluid mx-0 w-100'>
             <h1 
-              className='bg bg-black opacity-75 text text-light text-border text-center fw-bold border border-1 rounded rounded-2 p-2 mb-0'
+              className='bg bg-black opacity-75 text text-light text-center fw-bold border border-1 p-2 mb-0 w-100'
             >
               Consulta API
             </h1>
@@ -137,10 +135,9 @@ function App() {
 
         </div>
       </div>
-    
-    
+
     </>
-    
+
   )
 }
 
