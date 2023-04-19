@@ -28,6 +28,13 @@ b- ¿Qué es un estado en React?
     Resuminedo, el estado en React es una herramienta para "controlar la lógica de una aplicación" y para asegurarse de que la interfaz de usuario se actualice correctamente. Utilizando el Hook useState, se puede definir una variable de estado y una función para actualizarla, y luego utilizarla en el componente para mostrar información dinámica y controlar su comportamiento.
 
 
+    /**
+     * Se utiliza el método setState de React para actualizar el estado de "FORMA INMUTABLE" y reemplazar el valor del array message con uno nuevo que se obtiene a través del método filter.
+     * La actualización "inmutable" significa que se está creando una nueva copia del objeto del estado con los cambios necesarios, en lugar de modificar el objeto del estado original. Esto asegura que el estado original no se modifique accidentalmente y ayuda a evitar errores en la aplicación. En React, se utiliza la función setState o el hook useState para actualizar el estado de forma inmutable.
+     * La actualización "no inmutable" significa que se está modificando directamente el objeto del estado original, en lugar de crear una nueva copia del objeto del estado con los cambios necesarios. Esto puede tener consecuencias no deseadas, como modificar accidentalmente el estado original y provocar errores en la aplicación.
+     */
+
+
 
 
 //#########################################################################################################
