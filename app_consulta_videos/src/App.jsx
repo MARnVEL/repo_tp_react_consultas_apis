@@ -2,10 +2,10 @@
 import { useState, Suspense, useEffect } from "react";
 import ReactPlayer from 'react-player'
 
-import './App.css'
-
+import { useFetch } from "./hooks/useFetch";
 import { fetchData } from './utils/fetchData';
 
+import './App.css'
 
 
 //Preparamos el cuerpo de la request
@@ -22,7 +22,6 @@ const options = {
   }
 }
 
-
 const handleRequest = () => {
   const apiData = fetchData(API_URL_VIDS_10, options);
   return apiData;
@@ -36,11 +35,10 @@ function App() {
   const data = apiData.read();
   const videosArr = data.videos
 
-
   return (
 
     <>
-    
+
       <div className="container-fluid">
         <div className="row mb-2">
           <nav className='container-fluid mx-0 w-100'>
@@ -92,11 +90,11 @@ function App() {
               }
             </div>
           </div>
-          
+
         </div>
 
       </div>
-    
+
     </>
   )
 }

@@ -10,12 +10,11 @@ import { useEffect, useState } from "react";
  * @param {string} url
  * @returns { object } 
  */
-export function useFetch(url) {
+export function useFetch(url, options = null) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null)
     const [controller, setController] = useState(null)
-
 
     useEffect(() => {
         setLoading(true);
@@ -26,15 +25,28 @@ export function useFetch(url) {
             setController(abortController);
 
             try {
-                const responseJSON = await fetch(url, {
-                    signal: abortController.signal
-                });
-                const responseObjectJS = await responseJSON.json();
-                setError(null);
-                setData(responseObjectJS);
-                // setLoading(false);
-                // setError('Ocurrió un error');
-                
+                if (options !== null) {
+                    console.log("El 'options' no es nulo.")
+                    const responseJSON = await fetch( url, {
+                        ...options,
+                        signal: abortController.signal
+                    });
+                    const responseObjectJS = await responseJSON.json();
+                    setError(null);
+                    setData(responseObjectJS);
+                    // setLoading(false);
+                    // setError('Ocurrió un error');
+                } else {
+                    const responseJSON = await fetch( url, {
+                        signal: abortController.signal
+                    });
+                    const responseObjectJS = await responseJSON.json();
+                    setError(null);
+                    setData(responseObjectJS);
+                    // setLoading(false);
+                    // setError('Ocurrió un error');
+                }
+
             } catch (error) {
                 if (error.name === 'Abort Error') {
                     setData(null);
@@ -45,7 +57,7 @@ export function useFetch(url) {
                     throw new Error(error.message);
                 }
             } finally {
-                setLoading(false);
+                setLoading(false);//Este método se ejecuta cuando se terminan de resolover todas las promesas.
             }
 
         }
